@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -40,14 +41,20 @@ public class Manager : MonoBehaviour
                 break;
         }
 
+        CheckAllBtnPressed();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CheckAllBtnPressed()
     {
-        if(bt1&& bt2 && bt3 && (btnNext.interactable == false)){
+        if (bt1 && bt2 && bt3 && !btnNext.interactable)
+        {
             btnNext.interactable = true;
             Debug.Log("so often");
         }
+    }
+
+    public void SwitchScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }
