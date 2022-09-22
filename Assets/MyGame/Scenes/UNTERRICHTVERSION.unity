@@ -1448,6 +1448,7 @@ MonoBehaviour:
   b1: {fileID: 758411893}
   b2: {fileID: 1204207077}
   b3: {fileID: 1492445137}
+  btnNext: {fileID: 45802806}
 --- !u!4 &1959690047
 Transform:
   m_ObjectHideFlags: 0

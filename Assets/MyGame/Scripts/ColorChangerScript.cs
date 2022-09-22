@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class ColorChangerScript : MonoBehaviour
 {
     public GameObject theColored;
     public GameObject[] buttons;
-    public int[] buttonNumber;
-    int pressedBut = 0;
+    public bool[] buttonNumber;
+    bool pressedButs = false;
     public GameObject magicButton;
 
     private void Update()
     {
-       pressedBut = buttonNumber[0] + buttonNumber[1] + buttonNumber[2];
-
-        if (pressedBut == 3)
+        
+        if (buttonNumber[0] && buttonNumber[1] && buttonNumber[2] && (pressedButs == false))
         {
             magicButton.SetActive(true);
+            pressedButs = true;
+
         }
     }
 
@@ -30,46 +30,32 @@ public class ColorChangerScript : MonoBehaviour
         {
 
             case 1:
-                if (buttonNumber[0] <= 0)
+                if (buttonNumber[0] == false)
                 {
-                    buttonNumber[0]++;
+                    buttonNumber[0] = true;
                     Debug.Log(buttonNumber[0]);
                 }
                 break;
 
             case 2:
-                if (buttonNumber[1] <= 0)
+                if (buttonNumber[1] == false)
                 {
-                    buttonNumber[1]++;
+                    buttonNumber[1] = true;
                     Debug.Log(buttonNumber[1]);
                 }
                 break;
 
             case 3:
-                if (buttonNumber[2] <= 0)
+                if (buttonNumber[2] == false)
                 {
-                    buttonNumber[2]++;
+                    buttonNumber[2] = true;
                     Debug.Log(buttonNumber[2]);
                 }
                 break;
         }
 
-        
 
-        
 
-        if (EventSystem.current.currentSelectedGameObject == buttons[2])
-        {
-            if (buttons[2])
-            {
-                if (buttonNumber[2] <= 0)
-                {
-                    buttonNumber[2]++;
-                    Debug.Log(buttonNumber[2]);
-                }
-            }
-        }
-
-    }
+    } 
 
 }
