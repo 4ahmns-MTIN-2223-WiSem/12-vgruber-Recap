@@ -22,34 +22,41 @@ public class ColorChangerScript : MonoBehaviour
         }
     }
 
-    public void ColorChangerMan()
+    public void ColorChangerMan(int btn)
     {
         theColored.GetComponent<Image>().color = Random.ColorHSV();
 
-        if (EventSystem.current.currentSelectedGameObject == buttons[0])
+        switch (btn)
         {
-            if (buttons[0])
-            {
+
+            case 1:
                 if (buttonNumber[0] <= 0)
                 {
                     buttonNumber[0]++;
                     Debug.Log(buttonNumber[0]);
-
                 }
-            }
-        }
+                break;
 
-        if (EventSystem.current.currentSelectedGameObject == buttons[1])
-        {
-            if (buttons[1])
-            {
+            case 2:
                 if (buttonNumber[1] <= 0)
                 {
                     buttonNumber[1]++;
                     Debug.Log(buttonNumber[1]);
                 }
-            }
+                break;
+
+            case 3:
+                if (buttonNumber[2] <= 0)
+                {
+                    buttonNumber[2]++;
+                    Debug.Log(buttonNumber[2]);
+                }
+                break;
         }
+
+        
+
+        
 
         if (EventSystem.current.currentSelectedGameObject == buttons[2])
         {
@@ -63,11 +70,6 @@ public class ColorChangerScript : MonoBehaviour
             }
         }
 
-    
-
     }
-
-   
-
 
 }
