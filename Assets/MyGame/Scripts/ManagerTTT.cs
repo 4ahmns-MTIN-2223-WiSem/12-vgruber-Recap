@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class ManagerTTT : MonoBehaviour
 {
     public TTTElement[] game;
+    public TextMeshProUGUI wow;
+
+
     bool xTurn;
 
     void Start()
     {
         xTurn = true;
+        wow.text = "wow.";
     }
 
 
@@ -19,6 +24,7 @@ public class ManagerTTT : MonoBehaviour
          if (xTurn)
         {
             game[box].GetComponent<TTTElement>().BoxState = TTTState.X;
+
             xTurn = false;
         }
         else
@@ -26,6 +32,8 @@ public class ManagerTTT : MonoBehaviour
             game[box].GetComponent<TTTElement>().BoxState = TTTState.O;
             xTurn = true;
         }
+
+
     }
 
     public void ResetTTT()
@@ -34,5 +42,14 @@ public class ManagerTTT : MonoBehaviour
         {
             game[i].GetComponent<TTTElement>().BoxState = TTTState.W;
         }
+    }
+
+   void WinCheck()
+    {
+        if((game[0].GetComponent<TTTElement>().BoxState == TTTState.O && game[1].GetComponent<TTTElement>().BoxState == TTTState.O && game[2].GetComponent<TTTElement>().BoxState == TTTState.O)
+           )
+        {
+            wow.text = "wow   blue.";
+            }
     }
 }
