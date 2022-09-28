@@ -2,23 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ManagerTTT : MonoBehaviour
 {
-    public ManagerTTTElement[] game;
+    public TTTElement[] game;
+    bool xTurn;
 
-    // Start is called before the first frame update
     void Start()
     {
-        for(int i =0; i < game.Length; i++)
-        {
-            game[i].GetComponent<ManagerTTTElement>().myState = TTTState.O;
-        }
-
+        xTurn = true;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void SelectedBox(int box)
     {
-        
+         if (xTurn)
+        {
+            game[box].GetComponent<TTTElement>().BoxState = TTTState.X;
+            xTurn = false;
+        }
+        else
+        {
+            game[box].GetComponent<TTTElement>().BoxState = TTTState.O;
+            xTurn = true;
+        }
+    }
+
+    public void ResetTTT()
+    {
+        for (int i = 0; i < game.Length; i++)
+        {
+            game[i].GetComponent<TTTElement>().BoxState = TTTState.W;
+        }
     }
 }
