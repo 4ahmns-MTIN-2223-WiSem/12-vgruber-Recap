@@ -46,10 +46,5 @@ public class ManagerTTT : MonoBehaviour
 
    void WinCheck()
     {
-        if((game[0].GetComponent<TTTElement>().BoxState == TTTState.O && game[1].GetComponent<TTTElement>().BoxState == TTTState.O && game[2].GetComponent<TTTElement>().BoxState == TTTState.O)
-           )
-        {
-            wow.text = "wow   blue.";
-            }
     }
 }
