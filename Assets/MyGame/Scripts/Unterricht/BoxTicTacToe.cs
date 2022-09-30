@@ -12,9 +12,11 @@ public enum StateTTT
 
 public class BoxTicTacToe : MonoBehaviour
 {
-    StateTTT myState;
+    public StateTTT myState;
+    public int id;
     private Image myImage;
     private ManagerTicTacToe myManager;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,16 @@ public class BoxTicTacToe : MonoBehaviour
         Debug.Log(gameObject.name);
 
         myManager.player1 = !myManager.player1;
-        myManager.ShowActivePlayer1(myManager.player1);
+        if (myManager.player1)
+        {
+            myManager.playerState = StateTTT.playerX;
+        }
+
+        else
+        {
+            myManager.playerState = StateTTT.playerO;
+        }
+        myManager.ShowActivePlayer1(myManager.player1 );
     }
 
     public void SetImageBasedOnState(StateTTT state)
@@ -52,13 +63,16 @@ public class BoxTicTacToe : MonoBehaviour
         {
             case StateTTT.white:
                 myImage.sprite = myManager.imgWhite;
+                myManager.boxState[id] = StateTTT.white;
                 break;
 
             case StateTTT.playerO:
                 myImage.sprite = myManager.imgO;
+                myManager.boxState[id] = StateTTT.playerO;
                 break;
             case StateTTT.playerX:
                 myImage.sprite = myManager.imgX;
+                myManager.boxState[id] = StateTTT.playerX;
                 break;
         }
     }

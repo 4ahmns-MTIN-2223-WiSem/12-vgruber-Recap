@@ -10,13 +10,24 @@ public class ManagerTicTacToe : MonoBehaviour
     public Sprite imgWhite, imgX, imgO;
     [SerializeField] private Image playerO, playerX;
 
-public bool player1;
+    // o = false        x = true
+    public bool player1;
+
+    public StateTTT playerState;
+    public StateTTT[] boxState;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         player1 = false;
+        playerState = StateTTT.playerO;
         ShowActivePlayer1(player1);
+
+        for(int i = 0; i<boxState.Length; i++)
+        {
+            boxState[i] = StateTTT.white;
+        }
     }
 
     public void ShowActivePlayer1(bool isPlayer1)
@@ -42,9 +53,39 @@ public bool player1;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void EmptyCheck()
     {
-        
+
+    }
+
+    bool WonCheck(TTTState player)
+    {
+        bool wonOrNot = false;
+
+        int[,] checkMe = new int[8, 3] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
+
+        for (int i=0; i<8; i++)
+        {
+            if (boxState[checkMe[i,0]]== playerState & boxState[checkMe[i, 1]] == playerState & boxState[checkMe[i, 2]] == playerState )
+            {
+                wonOrNot = true;
+            }
+        }
+
+        return wonOrNot;
+    }
+
+    void DrawCheck()
+    {
+        bool xWon, oWon, white;
+
+        white = false;
+
+        xWon = WonCheck(TTTState.X);
+        oWon = WonCheck(TTTState.O);
+
+        if (!xWon & !oWon & white){
+
+        }
     }
 }
