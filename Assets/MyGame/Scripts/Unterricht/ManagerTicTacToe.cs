@@ -10,7 +10,8 @@ public class ManagerTicTacToe : MonoBehaviour
     [SerializeField] private BoxTicTacToe[] arrayTT;
     [SerializeField] private Button[] buttBoxes;
     public Sprite imgWhite, imgX, imgO;
-    [SerializeField] private Image playerO, playerX;
+    [SerializeField] private Image playerO, playerX, charcter;
+    [SerializeField] private Sprite[] mainCharacter;
 
 
 
@@ -59,7 +60,7 @@ public class ManagerTicTacToe : MonoBehaviour
             WonEvent();
         }
 
-        else if (WonCheck(StateTTT.playerX) & beardLevel > 0)
+        else if (WonCheck(StateTTT.playerX) & beardLevel >= 0)
         {
             beardLevel = beardLevel - 1;
             WonEvent();
@@ -71,7 +72,37 @@ public class ManagerTicTacToe : MonoBehaviour
             buttBoxes[i].interactable = true;
         }
 
+        switch (beardLevel)
+        {
+            case 0:
+                charcter.sprite = mainCharacter[beardLevel];
+                break;
 
+            case 1:
+                charcter.sprite = mainCharacter[beardLevel];
+                break;
+
+            case 2:
+                charcter.sprite = mainCharacter[beardLevel];
+                break;
+
+            case 3:
+                charcter.sprite = mainCharacter[beardLevel];
+                break;
+
+            case 4:
+                charcter.sprite = mainCharacter[beardLevel];
+                break;
+
+            case 5:
+                charcter.sprite = mainCharacter[beardLevel];
+                break;
+
+            case -1:
+                charcter.sprite = mainCharacter[6];
+                break;
+
+        }
         
     }
 

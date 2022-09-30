@@ -38,7 +38,7 @@ public class BoxTicTacToe : MonoBehaviour
             myManager.WonEvent();
         }
 
-        else if (myManager.WonCheck(StateTTT.playerX) & myManager.beardLevel > 0)
+        else if (myManager.WonCheck(StateTTT.playerX) & myManager.beardLevel >= 0)
         {
             myManager.beardLevel = myManager.beardLevel - 1;
             myManager.WonEvent();
