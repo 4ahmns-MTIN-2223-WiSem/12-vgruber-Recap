@@ -17,6 +17,7 @@ public class BoxTicTacToe : MonoBehaviour
     private Image myImage;
     private ManagerTicTacToe myManager;
     
+    
 
     // Start is called before the first frame update
     void Start()
@@ -30,31 +31,52 @@ public class BoxTicTacToe : MonoBehaviour
 
     public void PressMe()
     {
-        if (myManager.player1)
-        {
-            myState = StateTTT.playerX;
-            SetImageBasedOnState(myState);
 
+        if (myManager.WonCheck(StateTTT.playerO))
+        {
+            myManager.beardLevel++;
+            myManager.WonEvent();
         }
-        else
-        {
-            myState = StateTTT.playerO;
-            SetImageBasedOnState(myState);
 
-        }
-        Debug.Log(gameObject.name);
-
-        myManager.player1 = !myManager.player1;
-        if (myManager.player1)
+        else if (myManager.WonCheck(StateTTT.playerX) & myManager.beardLevel > 0)
         {
-            myManager.playerState = StateTTT.playerX;
+            myManager.beardLevel = myManager.beardLevel - 1;
+            myManager.WonEvent();
         }
 
         else
         {
-            myManager.playerState = StateTTT.playerO;
+
+            // change state
+
+            if (myManager.player1)
+            {
+                myState = StateTTT.playerX;
+                SetImageBasedOnState(myState);
+
+            }
+            else
+            {
+                myState = StateTTT.playerO;
+                SetImageBasedOnState(myState);
+
+            }
+            Debug.Log(gameObject.name);
+
+
+            myManager.player1 = !myManager.player1;
+            if (myManager.player1)
+            {
+                myManager.playerState = StateTTT.playerX;
+            }
+
+            else
+            {
+                myManager.playerState = StateTTT.playerO;
+            }
+            myManager.ShowActivePlayer1(myManager.player1);
+
         }
-        myManager.ShowActivePlayer1(myManager.player1 );
     }
 
     public void SetImageBasedOnState(StateTTT state)

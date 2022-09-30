@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class ManagerTicTacToe : MonoBehaviour
 {
+    public int beardLevel = 0;
 
     [SerializeField] private BoxTicTacToe[] arrayTT;
+    [SerializeField] private Button[] buttBoxes;
     public Sprite imgWhite, imgX, imgO;
     [SerializeField] private Image playerO, playerX;
 
+
+
     // o = false        x = true
+    // mc is o
     public bool player1;
 
     public StateTTT playerState;
@@ -47,10 +52,27 @@ public class ManagerTicTacToe : MonoBehaviour
 
     public void ResetBoard()
     {
-        for(int i = 0; i< arrayTT.Length; i++)
+
+        if (WonCheck(StateTTT.playerO))
+        {
+            beardLevel++;
+            WonEvent();
+        }
+
+        else if (WonCheck(StateTTT.playerX) & beardLevel > 0)
+        {
+            beardLevel = beardLevel - 1;
+            WonEvent();
+        }
+
+        for (int i = 0; i< arrayTT.Length; i++)
         {
             arrayTT[i].SetImageBasedOnState(StateTTT.white);
+            buttBoxes[i].interactable = true;
         }
+
+
+        
     }
 
     void EmptyCheck()
@@ -58,7 +80,7 @@ public class ManagerTicTacToe : MonoBehaviour
 
     }
 
-    bool WonCheck(TTTState player)
+    public bool WonCheck(StateTTT player)
     {
         bool wonOrNot = false;
 
@@ -66,7 +88,7 @@ public class ManagerTicTacToe : MonoBehaviour
 
         for (int i=0; i<8; i++)
         {
-            if (boxState[checkMe[i,0]]== playerState & boxState[checkMe[i, 1]] == playerState & boxState[checkMe[i, 2]] == playerState )
+            if (boxState[checkMe[i,0]]== player & boxState[checkMe[i, 1]] == player & boxState[checkMe[i, 2]] == player )
             {
                 wonOrNot = true;
             }
@@ -75,17 +97,33 @@ public class ManagerTicTacToe : MonoBehaviour
         return wonOrNot;
     }
 
-    void DrawCheck()
+    public void WonEvent()
     {
-        bool xWon, oWon, white;
-
-        white = false;
-
-        xWon = WonCheck(TTTState.X);
-        oWon = WonCheck(TTTState.O);
-
-        if (!xWon & !oWon & white){
-
+        for(int i=0; i<arrayTT.Length; i++)
+        {
+            buttBoxes[i].interactable = false;
         }
     }
+
+    //void DrawCheck()
+    //{
+    //    bool xWon, oWon, full;
+
+    //   full= false;
+
+    //    for (int i = 0; i < boxState.Length; i++)
+    //    {
+    //        if (boxState[i] == StateTTT.white)
+    //        {
+    //            full = true;
+    //        }
+    //    }
+
+    //    xWon = WonCheck(TTTState.X);
+    //    oWon = WonCheck(TTTState.O);
+
+    //    if (!xWon & !oWon & full){
+
+    //    }
+    //}
 }

@@ -2046,6 +2046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73b09b8bc3a76a43a83338dae4c612e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beardLevel: 0
   arrayTT:
   - {fileID: 878239932}
   - {fileID: 1586616623}
@@ -2056,6 +2057,16 @@ MonoBehaviour:
   - {fileID: 1644975454}
   - {fileID: 1997472233}
   - {fileID: 2111728607}
+  buttBoxes:
+  - {fileID: 878239933}
+  - {fileID: 1586616624}
+  - {fileID: 232690636}
+  - {fileID: 1016929397}
+  - {fileID: 1250963458}
+  - {fileID: 890644260}
+  - {fileID: 1644975455}
+  - {fileID: 1997472234}
+  - {fileID: 2111728608}
   imgWhite: {fileID: 21300000, guid: eedf371be64cdac45b9fe44b97735797, type: 3}
   imgX: {fileID: 21300000, guid: f8d12fd9c3dc5514799e03f64f961e64, type: 3}
   imgO: {fileID: 21300000, guid: 447ab465d10702f43931b5e4eb0c3f3f, type: 3}
