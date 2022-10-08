@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class ManagerTicTacToe : MonoBehaviour
 {
-    public int beardLevel = 0;
+    public int gunnarLevel = 0;
+    public int odolfLevel = 0;
 
     [SerializeField] private BoxTicTacToe[] arrayTT;
     [SerializeField] private Button[] buttBoxes;
     public Sprite imgWhite, imgX, imgO;
-    [SerializeField] private Image playerO, playerX, charcter;
+    [SerializeField] private Image playerO, playerX, odolf, gunnar;
     [SerializeField] private Sprite[] mainCharacter;
+    [SerializeField] private Sprite[] mainCharacter2;
 
 
 
@@ -21,7 +23,7 @@ public class ManagerTicTacToe : MonoBehaviour
 
     public StateTTT playerState;
     public StateTTT[] boxState;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,7 @@ public class ManagerTicTacToe : MonoBehaviour
         playerState = StateTTT.playerO;
         ShowActivePlayer1(player1);
 
-        for(int i = 0; i<boxState.Length; i++)
+        for (int i = 0; i < boxState.Length; i++)
         {
             boxState[i] = StateTTT.white;
         }
@@ -56,53 +58,31 @@ public class ManagerTicTacToe : MonoBehaviour
 
         if (WonCheck(StateTTT.playerO))
         {
-            beardLevel++;
+            odolfLevel++;
+            if (!(gunnarLevel > 0))
+            {
+                gunnarLevel = gunnarLevel - 1;
+            }
             WonEvent();
         }
 
-        else if (WonCheck(StateTTT.playerX) & beardLevel >= 0)
+        else if (WonCheck(StateTTT.playerX))
         {
-            beardLevel = beardLevel - 1;
+            gunnarLevel++;
+            if (!(odolfLevel > 0))
+            {
+                odolfLevel = odolfLevel - 1;
+            }
             WonEvent();
         }
 
-        for (int i = 0; i< arrayTT.Length; i++)
+        for (int i = 0; i < arrayTT.Length; i++)
         {
             arrayTT[i].SetImageBasedOnState(StateTTT.white);
             buttBoxes[i].interactable = true;
         }
 
-        switch (beardLevel)
-        {
-            case 0:
-                charcter.sprite = mainCharacter[beardLevel];
-                break;
-
-            case 1:
-                charcter.sprite = mainCharacter[beardLevel];
-                break;
-
-            case 2:
-                charcter.sprite = mainCharacter[beardLevel];
-                break;
-
-            case 3:
-                charcter.sprite = mainCharacter[beardLevel];
-                break;
-
-            case 4:
-                charcter.sprite = mainCharacter[beardLevel];
-                break;
-
-            case 5:
-                charcter.sprite = mainCharacter[beardLevel];
-                break;
-
-            case -1:
-                charcter.sprite = mainCharacter[6];
-                break;
-
-        }
+        BeardUpdate();
         
     }
 
@@ -116,9 +96,9 @@ public class ManagerTicTacToe : MonoBehaviour
 
         //checkMe 2d array listing all possible solutions to win the game
 
-        for (int i=0; i<8; i++)
+        for (int i = 0; i < 8; i++)
         {
-            if (boxState[checkMe[i,0]]== player & boxState[checkMe[i, 1]] == player & boxState[checkMe[i, 2]] == player )
+            if (boxState[checkMe[i, 0]] == player & boxState[checkMe[i, 1]] == player & boxState[checkMe[i, 2]] == player)
             {
                 wonOrNot = true;
             }
@@ -131,10 +111,78 @@ public class ManagerTicTacToe : MonoBehaviour
 
     public void WonEvent()
     {
-        for(int i=0; i<arrayTT.Length; i++)
+        for (int i = 0; i < arrayTT.Length; i++)
         {
             buttBoxes[i].interactable = false;
         }
+    }
+
+    private void BeardUpdate()
+    {
+        switch (odolfLevel)
+        {
+            case 0:
+                odolf.sprite = mainCharacter[odolfLevel];
+                break;
+
+            case 1:
+                odolf.sprite = mainCharacter[odolfLevel];
+                break;
+
+            case 2:
+                odolf.sprite = mainCharacter[odolfLevel];
+                break;
+
+            case 3:
+                odolf.sprite = mainCharacter[odolfLevel];
+                break;
+
+            case 4:
+                odolf.sprite = mainCharacter[odolfLevel];
+                break;
+
+            case 5:
+                odolf.sprite = mainCharacter[odolfLevel];
+                break;
+
+            case -1:
+                odolf.sprite = mainCharacter[6];
+                break;
+
+        }
+
+        switch (gunnarLevel)
+        {
+            case 0:
+                gunnar.sprite = mainCharacter2[gunnarLevel];
+                break;
+
+            case 1:
+                gunnar.sprite = mainCharacter2[gunnarLevel];
+                break;
+
+            case 2:
+                gunnar.sprite = mainCharacter2[gunnarLevel];
+                break;
+
+            case 3:
+                gunnar.sprite = mainCharacter2[gunnarLevel];
+                break;
+
+            case 4:
+                gunnar.sprite = mainCharacter2[gunnarLevel];
+                break;
+
+            case 5:
+                gunnar.sprite = mainCharacter2[gunnarLevel];
+                break;
+
+            case -1:
+                gunnar.sprite = mainCharacter2[6];
+                break;
+
+        }
+
     }
 
     //void DrawCheck()

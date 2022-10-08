@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 98952357}
   - component: {fileID: 98952356}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Odolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1359,6 +1359,7 @@ RectTransform:
   - {fileID: 905999339}
   - {fileID: 385002211}
   - {fileID: 98952355}
+  - {fileID: 1234758999}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1575,6 +1576,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211029248}
+  m_CullTransparentMesh: 1
+--- !u!1 &1234758998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234758999}
+  - component: {fileID: 1234759001}
+  - component: {fileID: 1234759000}
+  m_Layer: 5
+  m_Name: Gunnar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1234758999
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234758998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1079448576}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -329, y: -160}
+  m_SizeDelta: {x: 400, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1234759000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234758998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a065f742257aacd4dab5b45036bb1dca, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1234759001
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234758998}
   m_CullTransparentMesh: 1
 --- !u!1 &1250963453
 GameObject:
@@ -2046,7 +2122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73b09b8bc3a76a43a83338dae4c612e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beardLevel: 0
+  gunnarLevel: 0
+  odolfLevel: 0
   arrayTT:
   - {fileID: 878239932}
   - {fileID: 1586616623}
@@ -2072,7 +2149,8 @@ MonoBehaviour:
   imgO: {fileID: 21300000, guid: 447ab465d10702f43931b5e4eb0c3f3f, type: 3}
   playerO: {fileID: 838720450}
   playerX: {fileID: 905999340}
-  charcter: {fileID: 98952356}
+  odolf: {fileID: 98952356}
+  gunnar: {fileID: 1234759000}
   mainCharacter:
   - {fileID: 21300000, guid: d9240ca3abcba1f4d8cbead5479c7940, type: 3}
   - {fileID: 21300000, guid: 66b3091dfbaedf747a66cf658ba137e3, type: 3}
@@ -2082,6 +2160,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f100655c9a7703347a95ea502e86add7, type: 3}
   - {fileID: 21300000, guid: 56d3d502fceeca04eb3bbf122bcc74e4, type: 3}
   - {fileID: 21300000, guid: 04dfe5ebc5c094c4f8aa2d6fc3d792e4, type: 3}
+  mainCharacter2:
+  - {fileID: 21300000, guid: a065f742257aacd4dab5b45036bb1dca, type: 3}
+  - {fileID: 21300000, guid: e205f7251ae8fbf4abb41b4a6805cb7e, type: 3}
+  - {fileID: 21300000, guid: 842184c558c574241ae74d7f6b7abe79, type: 3}
+  - {fileID: 21300000, guid: cd38941bd09a94c48a61aea7c35ac664, type: 3}
+  - {fileID: 21300000, guid: 01766383521545449acdc88e1aa2a2e6, type: 3}
+  - {fileID: 21300000, guid: 67c5f15c835d03d40aabc7c2b1d65f62, type: 3}
+  - {fileID: 21300000, guid: 1798ad1ecf82c124dbcfd21ce1e6c0cd, type: 3}
+  - {fileID: 21300000, guid: d4a7d2c75c055e54aa297997703afaa1, type: 3}
   player1: 0
   playerState: 0
   boxState: 000000000000000000000000000000000000000000000000000000000000000000000000
