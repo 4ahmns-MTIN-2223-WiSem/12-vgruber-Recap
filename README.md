@@ -1,6 +1,7 @@
 # 12-vgruber-Recap
 
 Version: 2020.3.18f1
+Zu bewerten ist die "TicTacToe" Szene im Ortner
 
 Resolution: 1024x768
 
